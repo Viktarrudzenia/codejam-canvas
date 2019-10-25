@@ -5,6 +5,8 @@ const linkJSONSmall =
   "https://raw.githubusercontent.com/rolling-scopes-school/tasks/master/tasks/stage-2/codejam-canvas/data/4x4.json";
 const linkJSONMedium =
   "https://raw.githubusercontent.com/rolling-scopes-school/tasks/master/tasks/stage-2/codejam-canvas/data/32x32.json";
+const linkImageBig =
+  "https://raw.githubusercontent.com/rolling-scopes-school/tasks/master/tasks/stage-2/codejam-canvas/data/image.png";
 
 ctx.fillStyle = "gray";
 ctx.fillRect(0, 0, 512, 512);
@@ -15,7 +17,12 @@ let big = document.querySelector(".big");
 
 let сoefSmall = 512 / 4;
 let сoefMedium = 512 / 32;
-let сoefBig = 512 / 256;
+
+// insert image before canvas
+canvas.insertAdjacentHTML(
+  "beforebegin",
+  '<img id="rss" src="https://raw.githubusercontent.com/rolling-scopes-school/tasks/master/tasks/stage-2/codejam-canvas/data/image.png" alt="rolling scopes logo"></img>'
+);
 
 async function drawSmall() {
   try {
@@ -57,6 +64,23 @@ async function drawMedium() {
   }
 }
 
+// function createImagePromiser() {
+//   return new Promise(() => {
+//     console.log('I"m inside setTimeout');
+//     canvas.insertAdjacentHTML(
+//       "beforebegin",
+//       '<img id="rss" src="https://raw.githubusercontent.com/rolling-scopes-school/tasks/master/tasks/stage-2/codejam-canvas/data/image.png" alt="rolling scopes logo"></img>'
+//     );
+//   });
+// }
+
+async function drawBig() {
+  // ************************************ DRAW CANVAS BIG *******************************************
+  await ctx.scale(2, 2);
+  await ctx.drawImage(document.getElementById("rss"), 0, 0);
+  await ctx.scale(0.5, 0.5);
+}
+
 small.addEventListener("click", drawSmall);
 medium.addEventListener("click", drawMedium);
-// big.addEventListener("click", drawBig);
+big.addEventListener("click", drawBig);

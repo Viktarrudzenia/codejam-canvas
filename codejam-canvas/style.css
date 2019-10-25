@@ -288,4 +288,8 @@ footer {
   line-height: 23px;
   color: rgba(0, 0, 0, 0.87);
 }
+
+#rss {
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */
