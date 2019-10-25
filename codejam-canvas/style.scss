@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 2px -2px gray;
+  box-shadow: 0 4px 8px -1px grey;
   padding: 0 40px;
 
   &--app_bar_burger {
@@ -138,6 +138,57 @@
   &--previous_color,
   &--red_color,
   &--blue_color {
+    height: 24px;
+    width: 24px;
+    border: 1px solid black;
+    border-radius: 50%;
+  }
+
+  &--red_color {
+    background: red;
+  }
+
+  &--blue_color {
+    background: blue;
+  }
+
+  &--text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.541327);
+    padding-left: 25px;
+  }
+}
+
+// ************************************ Layout panel *********************************
+
+.layout {
+  width: 228px;
+  height: 246px;
+  background: lightgray;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  & > div {
+    width: 196px;
+    height: 48px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      background: gray;
+    }
+  }
+
+  &--checkbox {
     height: 24px;
     width: 24px;
     border: 1px solid black;
