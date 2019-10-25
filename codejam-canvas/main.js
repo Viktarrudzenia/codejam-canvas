@@ -8,15 +8,15 @@ const linkJSONMedium =
 const linkImageBig =
   "https://raw.githubusercontent.com/rolling-scopes-school/tasks/master/tasks/stage-2/codejam-canvas/data/image.png";
 
-ctx.fillStyle = "gray";
-ctx.fillRect(0, 0, 512, 512);
-
 let small = document.querySelector(".small");
 let medium = document.querySelector(".medium");
 let big = document.querySelector(".big");
+let clear = document.querySelector(".clear");
 
 let сoefSmall = 512 / 4;
 let сoefMedium = 512 / 32;
+
+clearCanvas();
 
 // insert image before canvas
 canvas.insertAdjacentHTML(
@@ -26,7 +26,6 @@ canvas.insertAdjacentHTML(
 
 async function drawSmall() {
   try {
-    console.log('I"m in async small function');
     const smallJSON = await fetch(linkJSONSmall);
     if (smallJSON.ok) {
       const dataSmallJSON = await smallJSON.json();
@@ -45,7 +44,6 @@ async function drawSmall() {
 
 async function drawMedium() {
   try {
-    console.log('I"m in async drawMedium function');
     const mediumJSON = await fetch(linkJSONMedium);
     if (mediumJSON.ok) {
       const datamediumJSON = await mediumJSON.json();
@@ -64,23 +62,18 @@ async function drawMedium() {
   }
 }
 
-// function createImagePromiser() {
-//   return new Promise(() => {
-//     console.log('I"m inside setTimeout');
-//     canvas.insertAdjacentHTML(
-//       "beforebegin",
-//       '<img id="rss" src="https://raw.githubusercontent.com/rolling-scopes-school/tasks/master/tasks/stage-2/codejam-canvas/data/image.png" alt="rolling scopes logo"></img>'
-//     );
-//   });
-// }
+function drawBig() {
+  ctx.scale(2, 2);
+  ctx.drawImage(document.getElementById("rss"), 0, 0);
+  ctx.scale(0.5, 0.5);
+}
 
-async function drawBig() {
-  // ************************************ DRAW CANVAS BIG *******************************************
-  await ctx.scale(2, 2);
-  await ctx.drawImage(document.getElementById("rss"), 0, 0);
-  await ctx.scale(0.5, 0.5);
+function clearCanvas() {
+  ctx.fillStyle = "gray";
+  ctx.fillRect(0, 0, 512, 512);
 }
 
 small.addEventListener("click", drawSmall);
 medium.addEventListener("click", drawMedium);
 big.addEventListener("click", drawBig);
+clear.addEventListener("click", clearCanvas);

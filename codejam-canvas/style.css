@@ -7,7 +7,6 @@
 
 .wrapper {
   max-width: 1440px;
-  min-width: 600px;
   height: 100vh;
   display: -ms-grid;
   display: grid;
