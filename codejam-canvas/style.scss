@@ -10,6 +10,7 @@
   height: 100vh;
   display: grid;
   grid-template-rows: 50px auto 50px;
+  margin: 0 auto;
 }
 
 //************************************* Navigation **************************************
@@ -19,7 +20,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  box-shadow: 0 4px 2px -2px gray;
+  padding: 0 40px;
 
   &--app_bar_burger {
     width: 24px;
@@ -79,6 +81,8 @@
   }
 }
 
+// ************************************ Tool panel *********************************
+
 .actions_tools {
   display: flex;
   flex-direction: column;
@@ -106,6 +110,48 @@
     line-height: 24px;
     color: rgba(0, 0, 0, 0.541327);
     padding-left: 35px;
+  }
+}
+
+// ************************************ Color panel *********************************
+
+.actions_color {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  & > div {
+    width: 196px;
+    height: 48px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      background: gray;
+    }
+  }
+
+  &--current_color,
+  &--previous_color,
+  &--red_color,
+  &--blue_color {
+    height: 24px;
+    width: 24px;
+    border: 1px solid black;
+    border-radius: 50%;
+  }
+
+  &--text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.541327);
+    padding-left: 25px;
   }
 }
 

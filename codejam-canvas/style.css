@@ -13,6 +13,7 @@
   display: grid;
   -ms-grid-rows: 50px auto 50px;
       grid-template-rows: 50px auto 50px;
+  margin: 0 auto;
 }
 
 .navigation {
@@ -26,7 +27,9 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 0 20px;
+  -webkit-box-shadow: 0 4px 2px -2px gray;
+          box-shadow: 0 4px 2px -2px gray;
+  padding: 0 40px;
 }
 
 .navigation--app_bar_burger {
@@ -151,6 +154,58 @@
   line-height: 24px;
   color: rgba(0, 0, 0, 0.541327);
   padding-left: 35px;
+}
+
+.actions_color {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.actions_color > div {
+  width: 196px;
+  height: 48px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.actions_color > div:hover {
+  background: gray;
+}
+
+.actions_color--current_color, .actions_color--previous_color, .actions_color--red_color, .actions_color--blue_color {
+  height: 24px;
+  width: 24px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.actions_color--text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.541327);
+  padding-left: 25px;
 }
 
 footer {
