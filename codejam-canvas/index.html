@@ -23,14 +23,62 @@
         </div>
       </header>
       <main>
-        <section class="main">
-          <div class="">
-            <div clas="tools"></div>
-            <div class="color"></div>
+        <div class="main">
+          <div class="actions">
+            <div class="actions_tools">
+              <div class="actions_tools--paint_bucket">
+                <img
+                  class="actions_tools--tool_img"
+                  src="./data/img/paint_bucket.svg"
+                  alt="paint bucket"
+                />
+                <div class="actions_tools--tool_name">Paint bucket</div>
+              </div>
+              <div class="actions_tools--choose_color">
+                <img
+                  class="actions_tools--tool_img"
+                  src="./data/img//choose_color.svg"
+                  alt="paint bucket"
+                />
+                <div class="actions_tools--tool_name">Choose color</div>
+              </div>
+              <div class="actions_tools--move">
+                <img class="actions_tools--tool_img" src="./data/img/move.svg" alt="paint bucket" />
+                <div class="actions_tools--tool_name">Move</div>
+              </div>
+              <div class="actions_tools--transform">
+                <img
+                  class="actions_tools--tool_img"
+                  src="./data/img/transform.svg"
+                  alt="paint bucket"
+                />
+                <div class="actions_tools--tool_name">Transform</div>
+              </div>
+            </div>
+
+            <div class="actions_color">
+              <div class="actions_color--current">Current color</div>
+              <div class="actions_color--previous">Previous color</div>
+              <div class="actions_color--red">red</div>
+              <div class="actions_color--blue">blue</div>
+            </div>
           </div>
-          <div></div>
-          <div></div>
-        </section>
+          <canvas class="canvas"></canvas>
+          <div class="layout">
+            <div class="layout--container">
+              <div class="layout--checkbox"></div>
+              <div class="layout--text"></div>
+            </div>
+            <div class="layout--container">
+              <div class="layout--checkbox"></div>
+              <div class="layout--text"></div>
+            </div>
+            <div class="layout--container">
+              <div class="layout--checkbox"></div>
+              <div class="layout--text"></div>
+            </div>
+          </div>
+        </div>
       </main>
       <footer>
         Made by Viktar Rudzenia
