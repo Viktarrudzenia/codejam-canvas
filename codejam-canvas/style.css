@@ -8,6 +8,11 @@
 .wrapper {
   max-width: 1440px;
   min-width: 600px;
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 50px auto 50px;
+      grid-template-rows: 50px auto 50px;
 }
 
 .navigation {
@@ -69,5 +74,17 @@
 
 .navigation--app_bar_dots:hover {
   background: lightgray;
+}
+
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=style.css.map */
