@@ -12,6 +12,7 @@ let small = document.querySelector(".small");
 let medium = document.querySelector(".medium");
 let big = document.querySelector(".big");
 let clear = document.querySelector(".clear");
+let mediumFun = document.querySelector(".mediumFun");
 
 let сoefSmall = 512 / 4;
 let сoefMedium = 512 / 32;
@@ -47,6 +48,9 @@ async function drawMedium() {
     const mediumJSON = await fetch(linkJSONMedium);
     if (mediumJSON.ok) {
       const datamediumJSON = await mediumJSON.json();
+      if (ctx.fillStyle === "#c8311e") {
+        clearCanvas();
+      }
       // ************************************ DRAW CANVAS MEDIUM *******************************************
       for (let i = 0, b = 0; b < datamediumJSON.length; i += сoefMedium, b++) {
         for (let j = 0, a = 0; a < datamediumJSON[b].length; j += сoefMedium, a++) {
@@ -62,10 +66,37 @@ async function drawMedium() {
   }
 }
 
+async function drawMediumFun() {
+  try {
+    const mediumJSON = await fetch(linkJSONMedium);
+    if (mediumJSON.ok) {
+      const datamediumJSON = await mediumJSON.json();
+      if (ctx.fillStyle === "#c8311e") {
+        clearCanvas();
+      }
+      // ************************************ DRAW CANVAS MEDIUM *******************************************
+      for (let i = 0, b = 0, s = 100; b < datamediumJSON.length; i += сoefMedium, b++) {
+        for (let j = 0, a = 0; a < datamediumJSON[b].length; j += сoefMedium, a++) {
+          s += 3;
+          setTimeout(s => {
+            ctx.fillStyle = `rgb(${datamediumJSON[b][a][0]}, ${datamediumJSON[b][a][1]}, ${
+              datamediumJSON[b][a][2]
+            })`;
+            ctx.fillRect(j, i, сoefMedium, сoefMedium);
+          }, s);
+        }
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function drawBig() {
   ctx.scale(2, 2);
   ctx.drawImage(document.getElementById("rss"), 0, 0);
   ctx.scale(0.5, 0.5);
+  ctx.fillStyle = "gray";
 }
 
 function clearCanvas() {
@@ -77,3 +108,4 @@ small.addEventListener("click", drawSmall);
 medium.addEventListener("click", drawMedium);
 big.addEventListener("click", drawBig);
 clear.addEventListener("click", clearCanvas);
+mediumFun.addEventListener("click", drawMediumFun);
