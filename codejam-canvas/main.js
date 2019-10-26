@@ -14,6 +14,8 @@ let big = document.querySelector(".big");
 let clear = document.querySelector(".clear");
 let mediumFun = document.querySelector(".mediumFun");
 
+let isDrawMediumFun = true;
+
 let сoefSmall = 512 / 4;
 let сoefMedium = 512 / 32;
 
@@ -30,6 +32,8 @@ async function drawSmall() {
     const smallJSON = await fetch(linkJSONSmall);
     if (smallJSON.ok) {
       const dataSmallJSON = await smallJSON.json();
+      isDrawMediumFun = false;
+
       // ************************************ DRAW CANVAS SMALL *******************************************
       for (let i = 0, b = 0; b < dataSmallJSON.length; i += сoefSmall, b++) {
         for (let j = 0, a = 0; a < dataSmallJSON[b].length; j += сoefSmall, a++) {
@@ -74,11 +78,16 @@ async function drawMediumFun() {
       if (ctx.fillStyle === "#c8311e") {
         clearCanvas();
       }
+      isDrawMediumFun = true;
+
       // ************************************ DRAW CANVAS MEDIUM *******************************************
       for (let i = 0, b = 0, s = 100; b < datamediumJSON.length; i += сoefMedium, b++) {
         for (let j = 0, a = 0; a < datamediumJSON[b].length; j += сoefMedium, a++) {
           s += 3;
           setTimeout(s => {
+            if (isDrawMediumFun === false) {
+              return;
+            }
             ctx.fillStyle = `rgb(${datamediumJSON[b][a][0]}, ${datamediumJSON[b][a][1]}, ${
               datamediumJSON[b][a][2]
             })`;
@@ -93,6 +102,7 @@ async function drawMediumFun() {
 }
 
 function drawBig() {
+  isDrawMediumFun = false;
   ctx.scale(2, 2);
   ctx.drawImage(document.getElementById("rss"), 0, 0);
   ctx.scale(0.5, 0.5);
@@ -100,6 +110,7 @@ function drawBig() {
 }
 
 function clearCanvas() {
+  isDrawMediumFun = false;
   ctx.fillStyle = "gray";
   ctx.fillRect(0, 0, 512, 512);
 }
