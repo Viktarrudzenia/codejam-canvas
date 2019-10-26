@@ -125,9 +125,7 @@ function clearCanvas() {
 
 function makeActive() {
   let target = event.target;
-  console.dir(target);
   if (target.childElementCount < 3) {
-    console.log(currentActiveLayout);
     if (currentActiveLayout !== undefined) {
       currentActiveLayout.classList.remove("active");
       currentActiveCheckbox.classList.remove("active");
