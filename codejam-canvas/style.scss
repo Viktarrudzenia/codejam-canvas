@@ -185,13 +185,21 @@
     &:hover {
       background: gray;
     }
+
+    &.active {
+      background: gray;
+    }
   }
 
   &--checkbox {
     height: 24px;
     width: 24px;
     border: 1px solid black;
-    border-radius: 50%;
+
+    &.active {
+      background-color: white;
+      background-image: url(./data/img/isActiveCheckbox.png);
+    }
   }
 
   &--text {

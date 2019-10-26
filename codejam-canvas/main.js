@@ -1,6 +1,9 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+const layoutContainer = document.querySelector("layout--container");
+const checkbox = document.querySelector("layout--checkbox");
+
 const linkJSONSmall =
   "https://raw.githubusercontent.com/rolling-scopes-school/tasks/master/tasks/stage-2/codejam-canvas/data/4x4.json";
 const linkJSONMedium =
@@ -8,6 +11,7 @@ const linkJSONMedium =
 const linkImageBig =
   "https://raw.githubusercontent.com/rolling-scopes-school/tasks/master/tasks/stage-2/codejam-canvas/data/image.png";
 
+let layout = document.querySelector(".layout");
 let small = document.querySelector(".small");
 let medium = document.querySelector(".medium");
 let big = document.querySelector(".big");
@@ -18,6 +22,10 @@ let isDrawMediumFun = true;
 
 let сoefSmall = 512 / 4;
 let сoefMedium = 512 / 32;
+
+// vars for add/remove checkbox or layout class for layout
+let currentActiveCheckbox;
+let currentActiveLayout;
 
 clearCanvas();
 
@@ -115,6 +123,38 @@ function clearCanvas() {
   ctx.fillRect(0, 0, 512, 512);
 }
 
+function makeActive() {
+  let target = event.target;
+  console.dir(target);
+  if (target.childElementCount < 3) {
+    console.log(currentActiveLayout);
+    if (currentActiveLayout !== undefined) {
+      currentActiveLayout.classList.remove("active");
+      currentActiveCheckbox.classList.remove("active");
+    }
+    if (target.className.includes("layout--container")) {
+      target.classList.add("active");
+      target.firstElementChild.classList.add("active");
+      currentActiveLayout = target;
+      currentActiveCheckbox = target.firstElementChild;
+    } else if (target.className.includes("layout--text")) {
+      target.previousElementSibling.classList.add("active");
+      target.parentElement.classList.add("active");
+      currentActiveLayout = target.parentElement;
+      currentActiveCheckbox = target.previousElementSibling;
+    } else {
+      target.classList.add("active");
+      target.parentElement.classList.add("active");
+      currentActiveLayout = target.parentElement;
+      currentActiveCheckbox = target;
+    }
+  }
+}
+
+// small.classList.add("active");
+// small.firstElementChild.classList.add("active");
+
+layout.addEventListener("click", makeActive);
 small.addEventListener("click", drawSmall);
 medium.addEventListener("click", drawMedium);
 big.addEventListener("click", drawBig);
